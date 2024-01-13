@@ -15,7 +15,7 @@ const dbConnection = new Sequelize(process.env.DATABASE, process.env.DBUSERNAME,
 
 
 dbConnection.authenticate().then(()=>{console.log("successfully connected to database")}).catch((err)=>{console.log("error",err)})
-// dbConnection.sync({alter:true})
+
 
 
 
