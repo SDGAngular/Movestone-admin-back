@@ -1,0 +1,94 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Rickshaw backend",
+    "dateExported": "2024-01-13T06:21:54.004Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "5af59d03-5170-4cac-8739-1374129abaef",
+            "colId": "4a03b0ea-2a82-49d7-ac0f-26ca0ef945f0",
+            "containerId": "",
+            "name": "homeDetails:Config",
+            "url": "localhost:5000/getHomeDetails",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-01-10T06:02:13.042Z",
+            "modified": "2024-01-10T06:02:13.042Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "1da511ec-348c-4214-b22a-d9e1ad73a728",
+            "colId": "4a03b0ea-2a82-49d7-ac0f-26ca0ef945f0",
+            "containerId": "",
+            "name": "productConfig",
+            "url": "localhost:5000/getProductDetails",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-01-10T06:02:43.950Z",
+            "modified": "2024-01-10T06:24:47.212Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productID\":\"PMP01\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "13ab7e1e-916b-4be3-9346-9cdb4bf6b704",
+            "colId": "4a03b0ea-2a82-49d7-ac0f-26ca0ef945f0",
+            "containerId": "",
+            "name": "sendQuery",
+            "url": "localhost:5000/createQuery",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-01-10T07:09:03.193Z",
+            "modified": "2024-01-13T06:03:06.536Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"queryID\":\"328a3dc8-e334-4327-870c-947b29561ba0\",\n  \"queryMessage\":\"I want to buy toto\",\n  \"queryPhone\":\"7003420196\",\n  \"queryEmail\":\"dasguptasubhayu@gmail.com\"\n  \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "dd91d0d1-4d53-47c4-b7b0-4d2b73dfe050",
+            "colId": "4a03b0ea-2a82-49d7-ac0f-26ca0ef945f0",
+            "containerId": "",
+            "name": "phone check",
+            "url": "https://graph.facebook.com/v18.0/199439156589717/messages",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-01-11T17:34:15.506Z",
+            "modified": "2024-01-11T17:57:42.106Z",
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.com)",
+                    "isDisabled": true
+                },
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\"messaging_product\":\"whatsapp\",\n\"to\":\"+917003420196\",\n\"type\":\"text\",\n\"preview_url\": false,\n\"recipient_type\": \"individual\",\n\"text\": {\n        \"body\": \"teiu98989898989xt\"\n},\n\"language\":{\"code\":\"en_US\"}}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "EAAKdMrZCZB6ZCMBO0jb7Uf4bwBy1soatzhntFDFZBqpXAvduOETwd61aIGHgxYA4LyunXZAFUNcgDZCoa6rLhQDOwaZCjjFIukbF9JiPPXbDN9H1wVrWaYfSghCK8MfQtXvMFyz2ZCAonXE8qWZBanhbPpRwBEwEpVpciR42hHNDldm07xjRqw2slSQoTdppxHSlNDDgXKBmwvOLOWL1G8rJ08d3V8oOIHuwlVC1v"
+            },
+            "tests": []
+        }
+    ]
+}
