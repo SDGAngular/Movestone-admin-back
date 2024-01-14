@@ -9,7 +9,6 @@ const homeService = async (request,response)=>{
 
   
     try{
-        await Query.sync({alter:true})
         responseBody.products = await getAllDetailsFromProductsTable();
         responseBody.testimonials = await getAllDetailsFromTestimonials();
         

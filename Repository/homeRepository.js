@@ -1,7 +1,9 @@
+const { Op } = require("sequelize");
 const ProductsPictures = require("../database/models/productPics");
 const Products = require("../database/models/products");
 const Query = require("../database/models/query");
 const Testimonial = require("../database/models/testimonials");
+const Users = require("../database/models/user");
 
 
 
@@ -43,8 +45,49 @@ const createQuery= async (body) =>{
     }
 }
 
+const getAllQueries= async (body)=>{
+
+    try{
+        return await Query.findAll({attributes:['queryID','queryMessage','queryPhone','queryEmail','forProduct']});
+    }
+
+
+    catch(error){
+        throw ({errorMessage:"error caught in repo level", message:error.message});
+   }
+
+}
+
+
+
+const findUser=async (request)=>{
+    try{
+
+        return await Users.findOne({
+            where: {
+              [Op.or]: [
+                {
+                    userID:request.userID,
+                    password:request.password
+                },
+                {
+                    email:request.email??null,
+                    password:request.password
+                }
+              ],
+            }
+          });
+
+        // return await Users.findOne({where:{userID:request.userID}})
+
+    }
+    catch(error)
+{
+    throw ({errorMessage:"error caught in repo level", message:error.message});
+}}
+
 
 
 module.exports={getAllDetailsFromProductsTable,
     getAllDetailsFromTestimonials,
-    getProductDetails, createQuery}
+    getProductDetails, createQuery,getAllQueries,findUser}

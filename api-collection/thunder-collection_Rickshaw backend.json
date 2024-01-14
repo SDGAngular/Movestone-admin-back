@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Rickshaw backend",
-    "dateExported": "2024-01-13T06:21:54.004Z",
+    "dateExported": "2024-01-14T18:16:18.418Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -14,7 +14,7 @@
             "method": "GET",
             "sortNum": 10000,
             "created": "2024-01-10T06:02:13.042Z",
-            "modified": "2024-01-10T06:02:13.042Z",
+            "modified": "2024-01-14T06:26:48.466Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -39,6 +39,38 @@
             "tests": []
         },
         {
+            "_id": "94956b08-6b09-4bae-9873-23c127742b16",
+            "colId": "4a03b0ea-2a82-49d7-ac0f-26ca0ef945f0",
+            "containerId": "",
+            "name": "get queries",
+            "url": "localhost:5000/getQuery",
+            "method": "POST",
+            "sortNum": 25000,
+            "created": "2024-01-14T16:30:29.675Z",
+            "modified": "2024-01-14T18:15:39.351Z",
+            "headers": [
+                {
+                    "name": "authToken",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDUyNTk2MTgsInVzZXJJRCI6IlNodWJoYXl1IiwiaWF0IjoxNzA1MjU2MDE4fQ.Nz38HKdZvwWhblG1JMWG5yGwH8W6B6e6bt2bgK7Sy5w",
+                    "isDisabled": true
+                }
+            ],
+            "params": [
+                {
+                    "name": "authToken",
+                    "value": "",
+                    "isDisabled": true,
+                    "isPath": false
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
             "_id": "13ab7e1e-916b-4be3-9346-9cdb4bf6b704",
             "colId": "4a03b0ea-2a82-49d7-ac0f-26ca0ef945f0",
             "containerId": "",
@@ -47,46 +79,32 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-01-10T07:09:03.193Z",
-            "modified": "2024-01-13T06:03:06.536Z",
+            "modified": "2024-01-13T14:15:36.384Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"queryID\":\"328a3dc8-e334-4327-870c-947b29561ba0\",\n  \"queryMessage\":\"I want to buy toto\",\n  \"queryPhone\":\"7003420196\",\n  \"queryEmail\":\"dasguptasubhayu@gmail.com\"\n  \n}",
+                "raw": "{\n  \"queryID\":\"fc52731e-bcc9-4bc1-92b4-720b1fae0550\",\n\n  \"queryPhone\":\"7003420196\",\n  \"queryEmail\":\"dasguptasubhayu@gmail.com\"\n  \n}",
                 "form": []
             },
             "tests": []
         },
         {
-            "_id": "dd91d0d1-4d53-47c4-b7b0-4d2b73dfe050",
+            "_id": "bb63ae38-dabb-42ed-886b-7a9634b960c0",
             "colId": "4a03b0ea-2a82-49d7-ac0f-26ca0ef945f0",
             "containerId": "",
-            "name": "phone check",
-            "url": "https://graph.facebook.com/v18.0/199439156589717/messages",
+            "name": "Auth",
+            "url": "localhost:5000/authenticate",
             "method": "POST",
-            "sortNum": 30000,
-            "created": "2024-01-11T17:34:15.506Z",
-            "modified": "2024-01-11T17:57:42.106Z",
-            "headers": [
-                {
-                    "name": "User-Agent",
-                    "value": "Thunder Client (https://www.thunderclient.com)",
-                    "isDisabled": true
-                },
-                {
-                    "name": "Content-Type",
-                    "value": "application/json"
-                }
-            ],
+            "sortNum": 40000,
+            "created": "2024-01-14T17:46:59.192Z",
+            "modified": "2024-01-14T18:02:48.536Z",
+            "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\"messaging_product\":\"whatsapp\",\n\"to\":\"+917003420196\",\n\"type\":\"text\",\n\"preview_url\": false,\n\"recipient_type\": \"individual\",\n\"text\": {\n        \"body\": \"teiu98989898989xt\"\n},\n\"language\":{\"code\":\"en_US\"}}",
+                "raw": "{\n  \n  \"userID\":\"Shubhayu\",\n  \"password\":\"Kolkata@1\"\n  \n}",
                 "form": []
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "EAAKdMrZCZB6ZCMBO0jb7Uf4bwBy1soatzhntFDFZBqpXAvduOETwd61aIGHgxYA4LyunXZAFUNcgDZCoa6rLhQDOwaZCjjFIukbF9JiPPXbDN9H1wVrWaYfSghCK8MfQtXvMFyz2ZCAonXE8qWZBanhbPpRwBEwEpVpciR42hHNDldm07xjRqw2slSQoTdppxHSlNDDgXKBmwvOLOWL1G8rJ08d3V8oOIHuwlVC1v"
             },
             "tests": []
         }
