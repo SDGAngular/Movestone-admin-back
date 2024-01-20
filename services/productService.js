@@ -11,6 +11,11 @@ const productService = async (request,response)=>{
             throw ({errorMessage:"error caught in service level", message:"productID required for search"})
         }
         responseBody.productDetails = await  getProductDetails(productID);
+        responseBody.otherProducts = await getAllDetailsFromProductsTable();
+        responseBody.otherProducts = responseBody.otherProducts.filter((eachProduct)=>{
+            
+            return eachProduct.productID!=productID;
+        })
 
 
       
