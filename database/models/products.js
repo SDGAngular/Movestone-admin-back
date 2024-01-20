@@ -48,7 +48,7 @@ const Products = db.define('Products', {
 // `sequelize.define` also returns the model
 console.log(Products === db.models.Products); // true
 
-Products.hasMany(ProductsPictures,{foreignKey:'productID', as:'productPictureDeatils'});
+Products.hasMany(ProductsPictures,{foreignKey:'productID', as:'productPictureDetails'});
 ProductsPictures.belongsTo(Products,{foreignKey:'productID', as:'productInfo'});
 
 // Products.hasMany(Query,{foreignKey:'productID', as:'queries'});
