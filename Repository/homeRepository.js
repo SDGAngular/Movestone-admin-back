@@ -1,4 +1,4 @@
-const { Op } = require("sequelize");
+const { Op, Sequelize } = require("sequelize");
 const ProductsPictures = require("../database/models/productPics");
 const Products = require("../database/models/products");
 const Query = require("../database/models/query");
@@ -21,7 +21,7 @@ const getAllDetailsFromProductsTable = async ()=>{
 
 const getProductDetails = async (productID)=>{
     try{
-        return await Products.findOne({attributes:['productID','productName','price','features'],include:{model:ProductsPictures, as:'productPictureDetails', attributes:['productImageURL']},where:{productID}});
+        return await Products.findOne({attributes:{exclude:['createdAt','updatedAt']},include:{model:ProductsPictures, as:'productPictureDetails', attributes:['productImageURL']},where:{productID}});
     }
     catch(error){
          throw ({errorMessage:"error caught in repo level", message:error.message});
@@ -58,6 +58,45 @@ const getAllQueries= async (body)=>{
 
 }
 
+const getAllQueryFromToday = async ()=>{
+    try{
+        
+        const TODAY_START = new Date().setHours(0, 0, 0, 0);
+        const NOW = new Date();
+        return await Query.findAll({
+
+            where: {
+                createdAt: { 
+                  [Op.gt]: TODAY_START,
+                  [Op.lt]: NOW
+                },
+              },
+            
+        })
+    }
+    catch(error){
+        throw ({errorMessage:"error caught in repo level", message:error.message});
+   }
+}
+
+
+const getAllQueryFromWeekAndMonth = async (days)=>{
+    try{
+       
+        return await Query.findAll({
+            where:{
+                createdAt: {
+                    [Op.gte]: Sequelize.literal(`NOW() - INTERVAL '${days}'`),
+                  }
+            }
+        })
+        
+    }
+    catch(error){
+        throw ({errorMessage:"error caught in repo level", message:error.message});
+   }
+}
+
 
 
 const findUser=async (request)=>{
@@ -89,5 +128,5 @@ const findUser=async (request)=>{
 
 
 module.exports={getAllDetailsFromProductsTable,
-    getAllDetailsFromTestimonials,
+    getAllDetailsFromTestimonials,getAllQueryFromToday,getAllQueryFromWeekAndMonth,
     getProductDetails, createQuery,getAllQueries,findUser}

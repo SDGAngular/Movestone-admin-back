@@ -22,7 +22,85 @@ const Products = db.define('Products', {
         allowNull: false,
 
     },
+    colorOptions:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
 
+    motor:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+
+    controller:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    tyreDiameter:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    tyreType:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    weightWithoutBattery:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+
+    breakType:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    roof:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    shocker:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    seatingCapacity:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    bodyDimension:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    charger:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    battery:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    rim:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    mileage:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    sideCover:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    wiper:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    converter:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    headLight:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
     price: {
 
         type: DataTypes.STRING,

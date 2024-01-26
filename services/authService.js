@@ -21,6 +21,10 @@ const authService = async (request,response)=>{
                 
                 userID: request.userID },'shhhh');
         
+                
+
+                await jwt.verify(responseBody.jwtToken,'shhhh');
+
                 return responseBody;
 
         }

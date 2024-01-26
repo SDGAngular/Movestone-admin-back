@@ -1,6 +1,6 @@
 
 const Joi = require('joi');
-const { createQuery, getAllQueries } = require('../Repository/homeRepository');
+const { createQuery, getAllQueries, getAllQueryFromToday, getAllQueryFromWeekAndMonth } = require('../Repository/homeRepository');
 const axios = require('axios');
 const { sendMobileMessage } = require('../external/external');
 const { response } = require('express');
@@ -47,15 +47,25 @@ const queryService = async (request) => {
 const getQueries = async (request)=>{
 
     const responseBody = {}
+    const filter = request.filter;
     try {
+        if(!filter){
+            responseBody.queryList = await getAllQueries(request);
+            return responseBody
+        }
+        switch(filter.toLowerCase()){
+            case 'today':
+                return await getAllQueryFromToday();
+            case 'week':
+                return await getAllQueryFromWeekAndMonth('7d');
+            case 'month':
+                return await getAllQueryFromWeekAndMonth('30d');
+            default:
+                throw ({ errorMessage: "error caught in query service level", message: "No records found for illegal paramter of filter" })
 
-       
-        responseBody.queryList = await getAllQueries(request);
-        return responseBody
 
-
-
-
+        }
+        
 
 
     }

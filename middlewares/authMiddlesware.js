@@ -3,7 +3,8 @@ const { getErrorPayload } = require('../utilities/getSuccessAndErrorPayload');
 
 const authMiddleware =(request,response, next)=>{
 
-    const jwt= request.headers.authtoken;
+    const jwt= request.headers.authorization.split(' ')[1];
+    console.log(jwt)
     if(jwt?.length===0){
         const getError = getErrorPayload();
         getError.message= "Invalid JWT token please refresh";
