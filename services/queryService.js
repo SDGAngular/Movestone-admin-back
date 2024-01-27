@@ -55,11 +55,14 @@ const getQueries = async (request)=>{
         }
         switch(filter.toLowerCase()){
             case 'today':
-                return await getAllQueryFromToday();
+                responseBody.queryList=await getAllQueryFromToday()
+                return responseBody ;
             case 'week':
-                return await getAllQueryFromWeekAndMonth('7d');
+                responseBody.queryList= await getAllQueryFromWeekAndMonth('7d');
+                return responseBody;
             case 'month':
-                return await getAllQueryFromWeekAndMonth('30d');
+                responseBody.queryList=await getAllQueryFromWeekAndMonth('30d');
+                return responseBody;
             default:
                 throw ({ errorMessage: "error caught in query service level", message: "No records found for illegal paramter of filter" })
 
