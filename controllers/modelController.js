@@ -18,7 +18,7 @@ const modelController = async (request, response, next) => {
       {
         "productID": "PMP01",
         "productName": "MOVE STONE SUPER",
-        "colorOptions": "GRAY / BLUE / RED / GREEN / SEA GREEN",
+        "colorOptions": "#808080 / #0000FF / #FF0000 / #00FF00 /#2E8B57",
         "motor": "1000 WT AND 1200 WT",
         "controller": "55 AH",
         "tyreDiameter": "3.75-12",
@@ -46,7 +46,7 @@ const modelController = async (request, response, next) => {
       {
         "productID": "KJP01",
         "productName": "MOVESTONE LOADER\n",
-        "colorOptions": "GRAY / BLUE / RED / GREEN / SEA GREEN",
+        "colorOptions": "#808080 / #0000FF / #FF0000 / #00FF00 /#2E8B57",
         "motor": "1900 WT AND 2200 WT\n",
         "controller": "55 AH",
         "tyreDiameter": "3.75-12",
@@ -74,7 +74,7 @@ const modelController = async (request, response, next) => {
       {
         "productID": "STR01",
         "productName": "MOVE STONE DELUXE",
-        "colorOptions": "GRAY / BLUE / RED / GREEN / SEA GREEN",
+        "colorOptions": "#808080 / #0000FF / #FF0000 / #00FF00 /#2E8B57",
         "motor": "1000 WT AND 1200 WT",
         "controller": "55 AH",
         "tyreDiameter": "3.75-12",
