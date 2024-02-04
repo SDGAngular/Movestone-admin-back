@@ -212,7 +212,7 @@ const modelController = async (request, response, next) => {
     ])
     await Query.sync({alter:true});
     await Testimonial.sync({alter:true});
-    await User.sync({alter:true});
+    await User.sync({force:true});
     await User.create({userID:'Shubhayu', password:'Kolkata@1', email:'dasguptasubhayu@gmail.com'})
 
   
