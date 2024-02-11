@@ -103,113 +103,94 @@ const modelController = async (request, response, next) => {
   
   ])
     await ProductsPictures.sync({force:true});
-    await ProductsPictures.bulkCreate([
-      {
-        "id": 5,
-        "productID": "STR01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706367176/rickshaw/deluxe/SEN_9380_qt3zx0.webp"
-      },
-      {
-        "id": 6,
-        "productID": "STR01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706367176/rickshaw/deluxe/SEN_9395_r33drw.webp"
-      },
-      {
-        "id": 7,
-        "productID": "STR01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706367177/rickshaw/deluxe/SEN_9388_ibl0ey.webp"
-      },
-      {
-        "id": 8,
-        "productID": "STR01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706367177/rickshaw/deluxe/SEN_9386_kcrgmw.webp"
-      },
-      {
-        "id": 9,
-        "productID": "STR01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706367177/rickshaw/deluxe/SEN_9387_jttv4v.webp"
-      },
-      {
-        "id": 10,
-        "productID": "STR01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706367178/rickshaw/deluxe/SEN_9383_b7wtzl.webp"
-      },
-      {
-        "id": 1,
-        "productID": "PMP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706368144/rickshaw/super/SEN_9310-removebg-preview_tmv5yz.png"
-      },
-      {
-        "id": 2,
-        "productID": "PMP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706428365/rickshaw/super/SEN_9314_c7x0l7.webp"
-      },
-      {
-        "id": 3,
-        "productID": "PMP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706428365/rickshaw/super/SEN_9314_c7x0l7.webp"
-      },
-      {
-        "id": 11,
-        "productID": "PMP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706428365/rickshaw/super/SEN_9322_eiiame.webp"
-      },
-      {
-        "id": 12,
-        "productID": "PMP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706428365/rickshaw/super/SEN_9328_ksvcba.webp"
-      },
-      {
-        "id": 13,
-        "productID": "PMP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706428365/rickshaw/super/SEN_9328_ksvcba.webp"
-      },
-      {
-        "id": 14,
-        "productID": "PMP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706428366/rickshaw/super/SEN_9341_o1rsgq.webp"
-      },
-      {
-        "id": 15,
-        "productID": "PMP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706428373/rickshaw/super/SEN_9334_rnrpil.webp"
-      },
-      {
-        "id": 16,
-        "productID": "PMP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706428366/rickshaw/super/SEN_9333_u4hwcv.webp"
-      },
-      {
-        "id": 4,
-        "productID": "STR01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1706366953/rickshaw/deluxe/SEN_9379-removebg-preview_ua31oe.png"
-      },
-      {
-        "id": 18,
-        "productID": "KJP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707027385/rickshaw/Loader/10_qbce5s.webp"
-      },
-      {
-        "id": 19,
-        "productID": "KJP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707027385/rickshaw/Loader/5_huqd5a.webp"
-      },
-      {
-        "id": 21,
-        "productID": "KJP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707027384/rickshaw/Loader/7_eyio0m.webp"
-      },
-      {
-        "id": 23,
-        "productID": "KJP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707027385/rickshaw/Loader/8_pbln28.webp"
-      },
-      {
-        "id": 22,
-        "productID": "KJP01",
-        "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707027385/rickshaw/Loader/4_aro0lv.webp"
-      }
-    ])
+    await ProductsPictures.bulkCreate(
+      [
+        {
+          "id": 18,
+          "productID": "KJP01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707027385/rickshaw/Loader/10_qbce5s.webp"
+        },
+        {
+          "id": 19,
+          "productID": "KJP01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707027385/rickshaw/Loader/5_huqd5a.webp"
+        },
+        {
+          "id": 21,
+          "productID": "KJP01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707027384/rickshaw/Loader/7_eyio0m.webp"
+        },
+        {
+          "id": 23,
+          "productID": "KJP01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707027385/rickshaw/Loader/8_pbln28.webp"
+        },
+        {
+          "id": 22,
+          "productID": "KJP01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707027385/rickshaw/Loader/4_aro0lv.webp"
+        },
+        {
+          "id": 5,
+          "productID": "STR01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707664707/rickshaw/deluxe/new_set/deluxe_9_sep2ww.webp"
+        },
+        {
+          "id": 6,
+          "productID": "STR01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707664707/rickshaw/deluxe/new_set/deluxe_4_eikslx.webp"
+        },
+        {
+          "id": 7,
+          "productID": "STR01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707664707/rickshaw/deluxe/new_set/deluxe_6_uwtzwk.webp"
+        },
+        {
+          "id": 8,
+          "productID": "STR01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707664707/rickshaw/deluxe/new_set/deluxe_3_nxtufx.webp"
+        },
+        {
+          "id": 9,
+          "productID": "STR01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707664707/rickshaw/deluxe/new_set/deluxe_5_xu7ilq.webp"
+        },
+        {
+          "id": 10,
+          "productID": "STR01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707664706/rickshaw/deluxe/new_set/deluxe_1_vydj8f.webp"
+        },
+        {
+          "id": 2,
+          "productID": "PMP01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707666167/rickshaw/super/new_set/super-5-65c8e8fc29a1c_dkicno.webp"
+        },
+        {
+          "id": 3,
+          "productID": "PMP01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707666167/rickshaw/super/new_set/super-2-65c8e8f9739cf_fy3nf5.webp"
+        },
+        {
+          "id": 11,
+          "productID": "PMP01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707666166/rickshaw/super/new_set/super-3-65c8e8f9ee645_tz8ikf.webp"
+        },
+        {
+          "id": 12,
+          "productID": "PMP01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707666166/rickshaw/super/new_set/super-1-65c8e8f7a6f77_vuekzn.webp"
+        },
+        {
+          "id": 13,
+          "productID": "PMP01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707666166/rickshaw/super/new_set/product1-65c8e8f6d77e8_x4owbw.webp"
+        },
+        {
+          "id": 1,
+          "productID": "PMP01",
+          "productImageURL": "https://res.cloudinary.com/duumuebzt/image/upload/v1707666166/rickshaw/super/new_set/super-3-65c8e8f9ee645_tz8ikf.webp"
+        }
+      ])
     await Query.sync({alter:true});
     await Testimonial.sync({alter:true});
     await User.sync({force:true});
