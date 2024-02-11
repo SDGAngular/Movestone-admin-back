@@ -12,6 +12,7 @@ const productService = async (request,response)=>{
         }
         responseBody.productDetails = await  getProductDetails(productID);
         responseBody.otherProducts = await getAllDetailsFromProductsTable();
+        responseBody.productDetails.productPictureDetails = responseBody.productDetails.productPictureDetails.sort(function(a, b){return a.id - b.id})
         responseBody.otherProducts = responseBody.otherProducts.filter((eachProduct)=>{
             
             return eachProduct.productID!=productID;

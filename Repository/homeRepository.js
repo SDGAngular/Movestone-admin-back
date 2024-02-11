@@ -21,7 +21,11 @@ const getAllDetailsFromProductsTable = async ()=>{
 
 const getProductDetails = async (productID)=>{
     try{
-        return await Products.findOne({attributes:{exclude:['createdAt','updatedAt']},include:{model:ProductsPictures, as:'productPictureDetails', attributes:['productImageURL']},where:{productID}});
+        return await Products.findOne({attributes:{exclude:['createdAt','updatedAt']},
+        
+        include:{model:ProductsPictures, as:'productPictureDetails', attributes:['productImageURL','id'], order:[['id','ASC']] }, 
+          
+        where:{productID}});
     }
     catch(error){
          throw ({errorMessage:"error caught in repo level", message:error.message});
