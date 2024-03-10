@@ -1,6 +1,6 @@
 
 const Joi = require('joi');
-const { createQuery, getAllQueries, getAllQueryFromToday, getAllQueryFromWeekAndMonth } = require('../Repository/homeRepository');
+const { createQuery, getAllQueries, getAllQueryFromToday, getAllQueryFromWeekAndMonth, submitEmailinTable, findAllEmail } = require('../Repository/homeRepository');
 const axios = require('axios');
 const { sendMobileMessage } = require('../external/external');
 const { response } = require('express');
@@ -44,6 +44,58 @@ const queryService = async (request) => {
 
 }
 
+const submitEmailsService = async (request)=>{
+    let responseBody = {}
+    try {
+
+        const querySchema = checkEmailSchema();
+        const value = await querySchema.validateAsync(request);
+        if(value){
+            responseBody= await submitEmailinTable(request);
+        }
+        else{
+            throw new Error(value)
+        }
+
+        
+        return responseBody;
+    }
+    catch (error) {
+
+        throw ({ errorMessage: "error caught in query service level", message: error.message });
+
+
+    }
+
+}
+
+
+const getEmailService = async ()=>{
+    const responseBody = {}
+    try {
+        const emailSet = new Set();
+
+
+        const allEmails = await findAllEmail();
+        allEmails.forEach((eachEmail)=>{
+            emailSet.add(eachEmail.emailID)
+        })
+
+        const allQueries = await getAllQueries()
+        allQueries.forEach((eachQuery)=>{
+            // allEmails.push({emailID:eachQuery.queryEmail})
+            emailSet.add(eachQuery.queryEmail)
+        });
+        return [...emailSet]
+    }
+    catch (error) {
+
+        throw ({ errorMessage: "error caught in query service level", message: error.message });
+
+
+    }
+
+}
 const getQueries = async (request)=>{
 
     const responseBody = {}
@@ -87,6 +139,11 @@ const getQueries = async (request)=>{
 
 
 
+function checkEmailSchema(){
+    return Joi.object({
+        emailID: Joi.string().email({ minDomainSegments: 2 })
+    })
+}
 
 
 
@@ -106,8 +163,8 @@ function getQuerySchema() {
 
 
 
-        queryEmail: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'in'] } })
+        queryEmail: Joi.string().email({ minDomainSegments: 2 })
     })
 }
 
-module.exports = { queryService, getQueries }
+module.exports = { queryService, getQueries , getEmailService, submitEmailsService}

@@ -4,6 +4,7 @@ const Products = require("../database/models/products");
 const Query = require("../database/models/query");
 const Testimonial = require("../database/models/testimonials");
 const Users = require("../database/models/user");
+const Emails = require("../database/models/email");
 
 
 
@@ -130,7 +131,32 @@ const findUser=async (request)=>{
 }}
 
 
+const findAllEmail=async (request)=>{
+    try{
+     return await Emails.findAll()
+
+    }
+    catch(error)
+{
+    throw ({errorMessage:"error caught in repo level", message:error.message});
+}}
+
+
+const submitEmailinTable=async (request)=>{
+    try{
+
+        const email=request.emailID;
+
+        return await Emails.findOrCreate({
+            where:{emailID:email},defaults:request});
+
+    }
+    catch(error)
+{
+    throw ({errorMessage:"error caught in repo level", message:error.message});
+}}
+
 
 module.exports={getAllDetailsFromProductsTable,
     getAllDetailsFromTestimonials,getAllQueryFromToday,getAllQueryFromWeekAndMonth,
-    getProductDetails, createQuery,getAllQueries,findUser}
+    getProductDetails, createQuery,getAllQueries,findUser,findAllEmail,submitEmailinTable}

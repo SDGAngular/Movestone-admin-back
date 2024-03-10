@@ -1,7 +1,7 @@
 const express = require('express');
 const { homeController } = require('../controllers/homeController');
 const { productController } = require('../controllers/productController');
-const { setQuery, getQuery } = require('../controllers/queryController');
+const { setQuery, getQuery, getEmails, submitEmail } = require('../controllers/queryController');
 const { authController } = require('../controllers/authController');
 const { authMiddleware } = require('../middlewares/authMiddlesware');
 const { modelController } = require('../controllers/modelController');
@@ -12,6 +12,8 @@ homeRouter.get('/getHomeDetails',homeController);
 homeRouter.post('/getProductDetails',productController);
 homeRouter.post('/createQuery',setQuery);
 homeRouter.post('/authenticate',authController);
+homeRouter.post('/submitEmails',submitEmail);
+
 
 homeRouter.get('/startAndCreateModels',modelController)
 homeRouter.get('/allProductsPictures',async (req,resp)=>{
@@ -24,6 +26,7 @@ homeRouter.get('/allProductsPictures',async (req,resp)=>{
 
 
 homeRouter.post('/getQuery',authMiddleware,getQuery);
+homeRouter.get('/getEmailsForNewsletter',authMiddleware,getEmails);
 
 module.exports =homeRouter;
 
