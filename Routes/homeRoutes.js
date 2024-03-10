@@ -7,6 +7,9 @@ const { authMiddleware } = require('../middlewares/authMiddlesware');
 const { modelController } = require('../controllers/modelController');
 const ProductsPictures = require('../database/models/productPics');
 const homeRouter = express.Router();
+var schedule = require('node-schedule');
+const Query = require('../database/models/query');
+
 
 homeRouter.get('/getHomeDetails',homeController);
 homeRouter.post('/getProductDetails',productController);
@@ -27,6 +30,15 @@ homeRouter.get('/allProductsPictures',async (req,resp)=>{
 
 homeRouter.post('/getQuery',authMiddleware,getQuery);
 homeRouter.get('/getEmailsForNewsletter',authMiddleware,getEmails);
+
+
+//Schedulers
+
+schedule.scheduleJob('deleteEveryMonth', '0 0 0 1,15 ? *', async function() { 
+
+   return await Query.truncate();
+
+} )
 
 module.exports =homeRouter;
 
