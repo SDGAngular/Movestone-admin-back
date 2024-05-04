@@ -12,6 +12,10 @@ const ProductsPictures = db.define('ProductsPictures', {
         allowNull: false,
         unique: false,
     },
+    productColor: {
+        type: Sequelize.STRING,
+        allowNull: true
+    },
     productImageURL: {
 
         type: Sequelize.STRING,

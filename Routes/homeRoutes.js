@@ -1,6 +1,6 @@
 const express = require('express');
 const { homeController } = require('../controllers/homeController');
-const { productController } = require('../controllers/productController');
+const { productController, searchImageByColor } = require('../controllers/productController');
 const { setQuery, getQuery, getEmails, submitEmail } = require('../controllers/queryController');
 const { authController } = require('../controllers/authController');
 const { authMiddleware } = require('../middlewares/authMiddlesware');
@@ -16,6 +16,7 @@ homeRouter.post('/getProductDetails',productController);
 homeRouter.post('/createQuery',setQuery);
 homeRouter.post('/authenticate',authController);
 homeRouter.post('/submitEmails',submitEmail);
+homeRouter.post('/getImageByColor',searchImageByColor);
 
 
 homeRouter.get('/startAndCreateModels',modelController)

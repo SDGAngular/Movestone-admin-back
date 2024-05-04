@@ -141,6 +141,23 @@ const findAllEmail=async (request)=>{
     throw ({errorMessage:"error caught in repo level", message:error.message});
 }}
 
+const getImagesByHextCodeAndProductCode=async (request)=>{
+    try{
+
+        const productID = request.productID;
+        const productColorHex = request.productColorHex;
+
+        return await ProductsPictures.findAll({where:{productID,productColor:productColorHex},
+
+            attributes:{exclude:['createdAt','updatedAt','id','productID','productColor']}
+        });
+
+    }
+    catch(error)
+{
+    throw ({errorMessage:"error caught in repo level", message:error.message});
+}}
+
 
 const submitEmailinTable=async (request)=>{
     try{
@@ -158,5 +175,6 @@ const submitEmailinTable=async (request)=>{
 
 
 module.exports={getAllDetailsFromProductsTable,
+    getImagesByHextCodeAndProductCode,
     getAllDetailsFromTestimonials,getAllQueryFromToday,getAllQueryFromWeekAndMonth,
     getProductDetails, createQuery,getAllQueries,findUser,findAllEmail,submitEmailinTable}

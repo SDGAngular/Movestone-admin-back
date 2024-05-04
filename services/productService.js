@@ -1,4 +1,4 @@
-const { getAllDetailsFromProductsTable, getAllDetailsFromTestimonials, getProductDetails } = require("../Repository/homeRepository");
+const { getAllDetailsFromProductsTable, getAllDetailsFromTestimonials, getProductDetails, getImagesByHextCodeAndProductCode } = require("../Repository/homeRepository");
 
 
 
@@ -33,9 +33,55 @@ const productService = async (request,response)=>{
 }
 
 
+const getImageByColorService= async (request,response)=>{
+
+
+    const responseBody={}
+    try{
+       
+        const productID = request.productID;
+        const productColorHex = request.productColorHex;
+
+        responseBody.productID=productID;
+        responseBody.productColorHex=productColorHex;
+
+        if(!productID || productID.length===0){
+            throw ({errorMessage:"error caught in service level", message:"productID required for search"})
+        }
+
+        if(!productColorHex || productColorHex.length===0){
+            throw ({errorMessage:"error caught in service level", message:"productColorHex required for search"})
+        }
+
+        const allPics= await getImagesByHextCodeAndProductCode(request);
+
+        responseBody.pictures = allPics.map((eachPic)=>{
+            return eachPic.productImageURL;
+        })
+
+
+        
+        
+
+
+
+      
+    }
+    catch(error){
+      
+        throw ({errorMessage:"error caught in service level", message:error.message});
+
+        
+    }
+
+    return responseBody;
+}
+
+
 
 
 
 module.exports={
-    productService
+    productService,
+    getImageByColorService
 }
