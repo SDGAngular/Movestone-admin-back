@@ -12,7 +12,7 @@ const Config = require("../database/models/config");
 const getAllDetailsFromProductsTable = async ()=>{
     try{
         return await Products.findAll({attributes:['productID','productName','price','features','imageURL'],
-        include:{model:ProductsPictures, as:'productPictureDetails', attributes:['productImageURL','id'], order:[['id','ASC']] }});
+        include:{model:ProductsPictures, as:'productPictureDetails', attributes:['productImageURL','id','productColor'], order:[['id','ASC']] }});
     }
     catch(error){
          throw ({errorMessage:"error caught in repo level", message:error.message});
