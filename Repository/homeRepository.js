@@ -11,7 +11,7 @@ const Config = require("../database/models/config");
 
 const getAllDetailsFromProductsTable = async ()=>{
     try{
-        return await Products.findAll({attributes:['productID','productName','price','features','imageURL'],
+        return await Products.findAll({attributes:['productID','productName','price','features','imageURL','colorOptions'],
         include:{model:ProductsPictures, as:'productPictureDetails', attributes:['productImageURL','id','productColor'], order:[['id','ASC']] }});
     }
     catch(error){
