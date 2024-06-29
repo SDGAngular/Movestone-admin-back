@@ -104,21 +104,104 @@ const Products = db.define('Products', {
     price: {
 
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
 
     },
     features: {
 
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
 
     },
     imageURL: {
 
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
 
+    },
+    curtain: {
+
+        type: Sequelize.STRING,
+        allowNull: true,
+
+    },
+    sideLookingGlass: {
+
+        type: Sequelize.STRING,
+        allowNull: true,
+
+    },
+    camera: {
+
+        type: Sequelize.STRING,
+        allowNull: true,
+
+    },
+    sensorLock: {
+
+        type: Sequelize.STRING,
+        allowNull: true,
+
+    },
+    rearShocker: {
+
+        type: Sequelize.STRING,
+        allowNull: true,
+
+    },
+
+    fireExtinguisher:{
+
+        type: Sequelize.STRING,
+        allowNull: true,
+
+    },
+    footMat:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    fmSet:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    taxiLight:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    fan:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+
+
+    toolKit:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+
+    jackHandleSet:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+
+    passengerHandle:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+
+    stepnyCover:{
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+
+    fogLight:{
+        type: Sequelize.STRING,
+        allowNull: true,
     }
+
+
+
+
 }, {
     // Other model options go here
 });

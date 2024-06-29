@@ -1,4 +1,4 @@
-const { getAllDetailsFromProductsTable, getAllDetailsFromTestimonials } = require("../Repository/homeRepository");
+const { getAllDetailsFromProductsTable, getAllDetailsFromTestimonials, getConfigProperties } = require("../Repository/homeRepository");
 const ProductsPictures = require("../database/models/productPics");
 const Products = require("../database/models/products");
 const Query = require("../database/models/query");
@@ -10,7 +10,12 @@ const homeService = async (request,response)=>{
   
     try{
         responseBody.products = await getAllDetailsFromProductsTable();
-        responseBody.testimonials = await getAllDetailsFromTestimonials();
+        // responseBody.testimonials = await getAllDetailsFromTestimonials();
+        const homeBannerImages = await getConfigProperties('home','banner');
+        responseBody.homeBannerImages = homeBannerImages.map((eachHomeBanner)=>{
+            return eachHomeBanner.attribute1
+        })
+        
         
     
       
@@ -26,10 +31,35 @@ const homeService = async (request,response)=>{
 
 }
 
+const configService = async (request)=>{
+    const responseBody={}
+
+  
+    try{
+        const homeBannerImages = await getConfigProperties(request.pageName,request.sectionName);
+
+        return homeBannerImages;
+    
+        
+        
+    
+      
+    }
+    catch(error){
+      
+        throw ({errorMessage:"error caught in service level", message:error.message});
+
+        
+    }
+
+
+
+}
+
 
 
 
 
 module.exports={
-    homeService
+    homeService,configService
 }

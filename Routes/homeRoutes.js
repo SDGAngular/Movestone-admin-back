@@ -1,5 +1,5 @@
 const express = require('express');
-const { homeController } = require('../controllers/homeController');
+const { homeController, configController } = require('../controllers/homeController');
 const { productController, searchImageByColor } = require('../controllers/productController');
 const { setQuery, getQuery, getEmails, submitEmail } = require('../controllers/queryController');
 const { authController } = require('../controllers/authController');
@@ -20,7 +20,10 @@ homeRouter.post('/getImageByColor',searchImageByColor);
 
 
 homeRouter.get('/startAndCreateModels',modelController)
+ homeRouter.post('/getConfig',configController)
 homeRouter.get('/allProductsPictures',async (req,resp)=>{
+
+
 
    const allPictures =await ProductsPictures.findAll({attributes:{exclude:['createdAt','updatedAt']}});
    resp.send(allPictures);

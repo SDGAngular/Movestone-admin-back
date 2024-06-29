@@ -11,12 +11,12 @@ const productService = async (request,response)=>{
             throw ({errorMessage:"error caught in service level", message:"productID required for search"})
         }
         responseBody.productDetails = await  getProductDetails(productID);
-        responseBody.otherProducts = await getAllDetailsFromProductsTable();
+        // responseBody.otherProducts = await getAllDetailsFromProductsTable();
         responseBody.productDetails.productPictureDetails = responseBody.productDetails.productPictureDetails.sort(function(a, b){return a.id - b.id})
-        responseBody.otherProducts = responseBody.otherProducts.filter((eachProduct)=>{
+        // responseBody.otherProducts = responseBody.otherProducts.filter((eachProduct)=>{
             
-            return eachProduct.productID!=productID;
-        })
+        //     return eachProduct.productID!=productID;
+        // })
 
 
       

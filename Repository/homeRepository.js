@@ -5,6 +5,7 @@ const Query = require("../database/models/query");
 const Testimonial = require("../database/models/testimonials");
 const Users = require("../database/models/user");
 const Emails = require("../database/models/email");
+const Config = require("../database/models/config");
 
 
 
@@ -18,6 +19,17 @@ const getAllDetailsFromProductsTable = async ()=>{
     
 }
 
+
+const getConfigProperties = async (pageName,sectionName) =>{
+
+    try{
+        return await Config.findAll({attributes:['pageName','sectionName','attribute1'],where:{pageName,sectionName}});
+    }
+    catch(error){
+         throw ({errorMessage:"error caught in repo level", message:error.message});
+    }
+
+}
 
 
 const getProductDetails = async (productID)=>{
@@ -175,6 +187,6 @@ const submitEmailinTable=async (request)=>{
 
 
 module.exports={getAllDetailsFromProductsTable,
-    getImagesByHextCodeAndProductCode,
+    getImagesByHextCodeAndProductCode,getConfigProperties,
     getAllDetailsFromTestimonials,getAllQueryFromToday,getAllQueryFromWeekAndMonth,
     getProductDetails, createQuery,getAllQueries,findUser,findAllEmail,submitEmailinTable}
