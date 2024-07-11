@@ -10,7 +10,7 @@ const homeService = async (request,response)=>{
   
     try{
         responseBody.products = await getAllDetailsFromProductsTable();
-        // responseBody.testimonials = await getAllDetailsFromTestimonials();
+        responseBody.testimonials = await getAllDetailsFromTestimonials();
         const homeBannerImages = await getConfigProperties('home','banner');
         responseBody.homeBannerImages = homeBannerImages.map((eachHomeBanner)=>{
             return eachHomeBanner.attribute1
