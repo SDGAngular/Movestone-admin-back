@@ -22,6 +22,7 @@ const homeService = async (request,response)=>{
     }
     catch(error){
       
+        console.log(error)
         throw ({errorMessage:"error caught in service level", message:error.message});
 
         

@@ -20,7 +20,6 @@ const queryService = async (request) => {
 
         if (value) {
             const createdQuery = await createQuery(request);
-            const sentQuery= await sendMobileMessage(createdQuery);
         
 
             return createdQuery;
@@ -36,8 +35,8 @@ const queryService = async (request) => {
 
     }
     catch (error) {
-
-        throw ({ errorMessage: "error caught in query service level", message: error.message });
+        console.log(error)
+        throw ({ errorMessage: "error caught in query service level", message: error });
 
 
     }
