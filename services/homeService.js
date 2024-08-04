@@ -11,10 +11,7 @@ const homeService = async (request,response)=>{
     try{
         responseBody.products = await getAllDetailsFromProductsTable();
         responseBody.testimonials = await getAllDetailsFromTestimonials();
-        const homeBannerImages = await getConfigProperties('home','banner');
-        responseBody.homeBannerImages = homeBannerImages.map((eachHomeBanner)=>{
-            return eachHomeBanner.attribute1
-        })
+
         
         
     
@@ -37,7 +34,15 @@ const configService = async (request)=>{
 
   
     try{
-        const homeBannerImages = await getConfigProperties(request.pageName,request.sectionName);
+        let homeBannerImages={};
+        homeBannerImages = await getConfigProperties(request);
+        // if(request.pageName && !request.sectionName){
+        //     homeBannerImages = await getConfigProperties(request.pageName,request.sectionName);
+        // }
+        // if(request.pageName && !request.sectionName){
+        //     homeBannerImages = await getConfigProperties(request.pageName,request.sectionName);
+        // }
+       
 
         return homeBannerImages;
     

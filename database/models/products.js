@@ -16,6 +16,12 @@ const Products = db.define('Products', {
         primaryKey:true,
         
     },
+    category:{
+
+        type: Sequelize.STRING,
+        allowNull: true,
+
+    },
     productName: {
 
         type: Sequelize.STRING,

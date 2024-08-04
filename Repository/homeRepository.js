@@ -21,10 +21,11 @@ const getAllDetailsFromProductsTable = async ()=>{
 }
 
 
-const getConfigProperties = async (pageName,sectionName) =>{
+const getConfigProperties = async (req) =>{
 
     try{
-        return await Config.findAll({attributes:['pageName','sectionName','attribute1'],where:{pageName,sectionName}});
+        console.log(req);
+        return await Config.findAll({attributes:['pageName','sectionName','attribute1'],where:{...req}});
     }
     catch(error){
          throw ({errorMessage:"error caught in repo level", message:error.message});
