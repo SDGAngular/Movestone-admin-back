@@ -1,228 +1,197 @@
-
-
 const db = require('../database');
-
 const { Sequelize, DataTypes } = require('sequelize');
 const ProductsPictures = require('./productPics');
-const Query = require('./query');
-
+// const Query = require('./query'); // Uncomment if needed
 
 const Products = db.define('Products', {
- 
     productID: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        primaryKey:true,
-        
-    },
-    category:{
-
-        type: Sequelize.STRING,
-        allowNull: true,
-
+        primaryKey: true,
     },
     productName: {
-
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
-
     },
-    colorOptions:{
-        type: Sequelize.STRING,
+    colorOptions: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-
-    motor:{
-        type: Sequelize.STRING,
+    motor: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-
-    controller:{
-        type: Sequelize.STRING,
+    controller: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    tyreDiameter:{
-        type: Sequelize.STRING,
+    tyreDiameter: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    tyreType:{
-        type: Sequelize.STRING,
+    tyreType: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    weightWithoutBattery:{
-        type: Sequelize.STRING,
+    weightWithoutBattery: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-
-    breakType:{
-        type: Sequelize.STRING,
+    breakType: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    roof:{
-        type: Sequelize.STRING,
+    roof: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    shocker:{
-        type: Sequelize.STRING,
+    shocker: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    seatingCapacity:{
-        type: Sequelize.STRING,
+    seatingCapacity: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    bodyDimension:{
-        type: Sequelize.STRING,
+    bodyDimension: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    charger:{
-        type: Sequelize.STRING,
+    charger: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    battery:{
-        type: Sequelize.STRING,
+    battery: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    rim:{
-        type: Sequelize.STRING,
+    rim: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    mileage:{
-        type: Sequelize.STRING,
+    mileage: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    sideCover:{
-        type: Sequelize.STRING,
+    sideCover: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    wiper:{
-        type: Sequelize.STRING,
+    wiper: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    converter:{
-        type: Sequelize.STRING,
+    converter: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    headLight:{
-        type: Sequelize.STRING,
+    headLight: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
     price: {
-
         type: DataTypes.STRING,
         allowNull: true,
-
     },
     features: {
-
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
-
     },
     imageURL: {
-
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
-
     },
     curtain: {
-
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
-
     },
     sideLookingGlass: {
-
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
-
     },
     camera: {
-
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
-
     },
     sensorLock: {
-
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
-
     },
     rearShocker: {
-
-        type: Sequelize.STRING,
-        allowNull: true,
-
-    },
-
-    fireExtinguisher:{
-
-        type: Sequelize.STRING,
-        allowNull: true,
-
-    },
-    footMat:{
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    fmSet:{
-        type: Sequelize.STRING,
+    fireExtinguisher: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    taxiLight:{
-        type: Sequelize.STRING,
+    footMat: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-    fan:{
-        type: Sequelize.STRING,
+    fmSet: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-
-
-    toolKit:{
-        type: Sequelize.STRING,
+    taxiLight: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-
-    jackHandleSet:{
-        type: Sequelize.STRING,
+    fan: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-
-    passengerHandle:{
-        type: Sequelize.STRING,
+    toolKit: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-
-    stepnyCover:{
-        type: Sequelize.STRING,
+    jackHandleSet: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
-
-    fogLight:{
-        type: Sequelize.STRING,
+    passengerHandle: {
+        type: DataTypes.STRING,
         allowNull: true,
-    }
-
-
-
-
+    },
+    stepnyCover: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    fogLight: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    category: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    visible: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'Y',
+    },
+    createdAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
 }, {
     // Other model options go here
 });
 
-// `sequelize.define` also returns the model
+// Check if the model is correctly defined
 console.log(Products === db.models.Products); // true
 
-Products.hasMany(ProductsPictures,{foreignKey:'productID', as:'productPictureDetails'});
-ProductsPictures.belongsTo(Products,{foreignKey:'productID', as:'productInfo'});
+// Define associations
+Products.hasMany(ProductsPictures, { foreignKey: 'productID', as: 'productPictureDetails' });
+ProductsPictures.belongsTo(Products, { foreignKey: 'productID', as: 'productInfo' });
 
-// Products.hasMany(Query,{foreignKey:'productID', as:'queries'});
-// Query.belongsTo(Products,{foreignKey:'forProuct',as:'forProduct'})
-
-
-
-
+// Uncomment and use the following lines if you have the Query model and association
+// Products.hasMany(Query, { foreignKey: 'productID', as: 'queries' });
+// Query.belongsTo(Products, { foreignKey: 'forProduct', as: 'forProduct' });
 
 module.exports = Products;

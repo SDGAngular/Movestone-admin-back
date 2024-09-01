@@ -11,7 +11,7 @@ const Config = require("../database/models/config");
 
 const getAllDetailsFromProductsTable = async ()=>{
     try{
-        return await Products.findAll({attributes:['productID','productName','price','features','imageURL','colorOptions'],
+        return await Products.findAll({attributes:['productID','productName','price','features','imageURL','colorOptions','visible'],
         include:{model:ProductsPictures, as:'productPictureDetails', attributes:['productImageURL','id','productColor'], order:[['id','ASC']] }});
     }
     catch(error){
@@ -187,8 +187,38 @@ const submitEmailinTable=async (request)=>{
     throw ({errorMessage:"error caught in repo level", message:error.message});
 }}
 
+const updateProductVisibilityInDb = async (productID, visible) => {
+    try {
+        console.log(`Updating productID: ${productID} to visible: ${visible}`);
+        
+        // Fetch the product
+        const product = await Products.findOne({ where: { productID } });
+
+        console.log(`\\nOld product: ${product}`);
+        
+        
+        if (!product) {
+            throw new Error('Product not found');
+        }
+        
+        // Update the visibility
+        product.visible = visible;
+
+        console.log(`\\n Updated product: ${product}`);
+        
+        // Save the changes
+        await product.save();
+        
+        return product; // Return the updated product
+    } catch (error) {
+        throw new Error('Error updating product visibility: ' + error.message);
+    }
+};
+
+
+
 
 module.exports={getAllDetailsFromProductsTable,
     getImagesByHextCodeAndProductCode,getConfigProperties,
     getAllDetailsFromTestimonials,getAllQueryFromToday,getAllQueryFromWeekAndMonth,
-    getProductDetails, createQuery,getAllQueries,findUser,findAllEmail,submitEmailinTable}
+    getProductDetails, createQuery,getAllQueries,findUser,findAllEmail,submitEmailinTable,updateProductVisibilityInDb}
