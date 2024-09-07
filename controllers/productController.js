@@ -1,4 +1,4 @@
-const { productService, getImageByColorService, updateVisibility } = require("../services/productService");
+const { productService, getImageByColorService, updateVisibility, createProductService, updateProductService, getAllProducts, deleteProductService } = require("../services/productService");
 const { getSuccessPayload, getErrorPayload } = require("../utilities/getSuccessAndErrorPayload");
 
 
@@ -65,4 +65,88 @@ const updateProductVisibility = async (request, response, next) => {
   }
 };
 
-module.exports = {productController,searchImageByColor, updateProductVisibility}
+
+
+
+
+const createProduct = async (request, response, next) => {
+  try {
+    
+
+  const prodDetails = request.body;
+  const createdProduct = await createProductService(prodDetails);
+
+
+    const successPayload = getSuccessPayload();
+    successPayload.responsePayload = createdProduct;
+    response.send(successPayload);
+  } catch (error) {
+    console.log('prod controller',error.message)
+    const errorPayload = getErrorPayload();
+    errorPayload.message = error.errorMessage;
+    errorPayload.extendedMessage = error.message;
+    response.send(errorPayload);
+  }
+};
+
+
+const deleteProduct = async (request, response, next) => {
+  try {
+    
+
+  const prodDetails = request.body;
+  const createdProduct = await deleteProductService(prodDetails);
+
+
+    const successPayload = getSuccessPayload();
+    successPayload.responsePayload = createdProduct;
+    response.send(successPayload);
+  } catch (error) {
+    console.log('prod controller',error.message)
+    const errorPayload = getErrorPayload();
+    errorPayload.message = error.errorMessage;
+    errorPayload.extendedMessage = error.message;
+    response.send(errorPayload);
+  }
+};
+
+const getAllProductsForAdminController = async (request, response, next) => {
+  try {
+    
+
+  const prodDetails = request.body;
+  const allProducts = await getAllProducts();
+
+
+    const successPayload = getSuccessPayload();
+    successPayload.responsePayload = allProducts;
+    response.send(successPayload);
+  } catch (error) {
+    const errorPayload = getErrorPayload();
+    errorPayload.message = error.errorMessage;
+    errorPayload.extendedMessage = error.message;
+    response.send(errorPayload);
+  }
+};
+
+
+const updateProduct = async (request, response, next) => {
+  try {
+    
+
+  const prodDetails = request.body;
+  const updatedProduct = await updateProductService(prodDetails);
+
+
+    const successPayload = getSuccessPayload();
+    successPayload.responsePayload = updatedProduct;
+    response.send(successPayload);
+  } catch (error) {
+    const errorPayload = getErrorPayload();
+    errorPayload.message = error.errorMessage;
+    errorPayload.extendedMessage = error.message;
+    response.send(errorPayload);
+  }
+};
+
+module.exports = {productController,createProduct,searchImageByColor, updateProductVisibility, getAllProductsForAdminController,deleteProduct, updateProduct}

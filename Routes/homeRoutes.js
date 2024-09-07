@@ -1,6 +1,6 @@
 const express = require('express');
 const { homeController, configController } = require('../controllers/homeController');
-const { productController, searchImageByColor, updateProductVisibility } = require('../controllers/productController');
+const { productController, searchImageByColor, updateProductVisibility, createProduct, updateProduct, getAllProductsForAdminController, deleteProduct } = require('../controllers/productController');
 const { setQuery, getQuery, getEmails, submitEmail } = require('../controllers/queryController');
 const { authController } = require('../controllers/authController');
 const { authMiddleware } = require('../middlewares/authMiddlesware');
@@ -18,8 +18,6 @@ homeRouter.post('/createQuery',setQuery);
 homeRouter.post('/authenticate',authController);
 homeRouter.post('/submitEmails',submitEmail);
 homeRouter.post('/getImageByColor',searchImageByColor);
-
-
 homeRouter.get('/startAndCreateModels',modelController)
  homeRouter.post('/getConfig',configController)
 homeRouter.get('/allProductsPictures',async (req,resp)=>{
@@ -35,6 +33,10 @@ homeRouter.get('/allProductsPictures',async (req,resp)=>{
 
 homeRouter.post('/getQuery',authMiddleware,getQuery);
 homeRouter.get('/getEmailsForNewsletter',authMiddleware,getEmails);
+homeRouter.get('/getAllProductsForAdmin',getAllProductsForAdminController)
+homeRouter.post('/createProduct',createProduct)
+homeRouter.patch('/updateProduct', updateProduct)
+homeRouter.delete('/deleteProduct', deleteProduct)
 
 
 //Schedulers

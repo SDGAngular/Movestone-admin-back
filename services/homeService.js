@@ -36,26 +36,11 @@ const configService = async (request)=>{
     try{
         let homeBannerImages={};
         homeBannerImages = await getConfigProperties(request);
-        // if(request.pageName && !request.sectionName){
-        //     homeBannerImages = await getConfigProperties(request.pageName,request.sectionName);
-        // }
-        // if(request.pageName && !request.sectionName){
-        //     homeBannerImages = await getConfigProperties(request.pageName,request.sectionName);
-        // }
-       
-
         return homeBannerImages;
-    
-        
-        
-    
-      
     }
     catch(error){
       
         throw ({errorMessage:"error caught in service level", message:error.message});
-
-        
     }
 
 

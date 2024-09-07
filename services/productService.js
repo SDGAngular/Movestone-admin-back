@@ -1,3 +1,5 @@
+const Config = require("../database/models/config");
+const { createProductRepo, updatedProductRepo, getAllProducts, deleteProductRepo } = require("../Repository/admin-repository");
 const { getProductDetails, getImagesByHextCodeAndProductCode, updateProductVisibilityInDb } = require("../Repository/homeRepository");
 
 const productService = async (request, response) => {
@@ -13,6 +15,65 @@ const productService = async (request, response) => {
     throw ({ errorMessage: "error caught in service level", message: error.message });
   }
   return responseBody;
+};
+
+
+const deleteProductService = async ({productID, secretKey}) => {
+  const responseBody = {};
+  try {
+   
+    const resp = await deleteProductRepo({productID,secretKey});
+    return resp;
+
+
+  } catch (error) {
+    console.log('prod service',error.message)
+    throw ({ errorMessage: "error caught in service level", message: error.message });
+  }
+};
+const createProductService = async ({productID,productName}) => {
+  const responseBody = {};
+  try {
+
+    const newProd={productID,productName,visible:'N'};
+    const resp = await createProductRepo(newProd);
+    return resp;
+
+
+  } catch (error) {
+    console.log('prod service',error.message)
+    throw ({ errorMessage: "error caught in service level", message: error.message });
+  }
+};
+
+const updateProductService = async (requestBody) => {
+  const responseBody = {};
+  try {
+
+    const updatedProduct = updatedProductRepo(requestBody);
+    
+    return updatedProduct;
+
+
+  } catch (error) {
+    console.log('prod service',error.message)
+    throw ({ errorMessage: "error caught in service level", message: error.message });
+  }
+};
+
+const getAllProductsService = async () => {
+  const responseBody = {};
+  try {
+
+    const updatedProduct = getAllProducts();
+    
+    return updatedProduct;
+
+
+  } catch (error) {
+    console.log('prod service',error.message)
+    throw ({ errorMessage: "error caught in service level", message: error.message });
+  }
 };
 
 const getImageByColorService = async (request, response) => {
@@ -60,5 +121,10 @@ const updateVisibility = async (productID, visible) => {
 module.exports = {
   productService,
   getImageByColorService,
-  updateVisibility
+  updateVisibility,
+  getAllProducts,
+  createProductService,
+  deleteProductService,
+  updateProductService,
+  getAllProductsService
 };
