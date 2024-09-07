@@ -9,6 +9,8 @@ const ProductsPictures = require('../database/models/productPics');
 const homeRouter = express.Router();
 var schedule = require('node-schedule');
 const Query = require('../database/models/query');
+const { uploadFileController } = require('../controllers/uploadFileController');
+const { upload } = require('../middlewares/multer-fileupload');
 
 
 homeRouter.get('/getHomeDetails',homeController);
@@ -33,7 +35,8 @@ homeRouter.get('/allProductsPictures',async (req,resp)=>{
 
 homeRouter.post('/getQuery',authMiddleware,getQuery);
 homeRouter.get('/getEmailsForNewsletter',authMiddleware,getEmails);
-homeRouter.get('/getAllProductsForAdmin',getAllProductsForAdminController)
+homeRouter.get('/getAllProductsForAdmin',getAllProductsForAdminController);
+homeRouter.post('/uploadFiles',upload.array('photos', 12),uploadFileController);
 homeRouter.post('/createProduct',createProduct)
 homeRouter.patch('/updateProduct', updateProduct)
 homeRouter.delete('/deleteProduct', deleteProduct)
