@@ -12,7 +12,6 @@ const authMiddleware = (request, response, next) => {
         response.status(401).send(getError);
     }
     try {
-
         const jwtToken = require('jsonwebtoken');
         var decoded = jwtToken.verify(jwt, 'shhhh');
         console.log(decoded)

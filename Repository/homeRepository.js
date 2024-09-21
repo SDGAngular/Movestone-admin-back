@@ -136,8 +136,6 @@ const findUser=async (request)=>{
             }
           });
 
-        // return await Users.findOne({where:{userID:request.userID}})
-
     }
     catch(error)
 {

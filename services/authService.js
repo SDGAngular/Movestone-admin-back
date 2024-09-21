@@ -16,33 +16,19 @@ const authService = async (request,response)=>{
         const user = await findUser(request);
         if(user){
             responseBody.jwtToken = jwt.sign({
-            
                 exp: Math.floor(Date.now() / 1000) + (60 * 60),
-                
                 userID: request.userID },'shhhh');
-        
-                
-
-                await jwt.verify(responseBody.jwtToken,'shhhh');
-
                 return responseBody;
-
         }
         else{
             throw ({errorMessage:"error caught in auth service level", message:"user not found"});
         }
-        
-
-        
-        
-    
-      
+   
     }
     catch(error){
       
         throw ({errorMessage:"error caught in auth service level", message:error.message});
-
-        
+   
     }
 
 }
