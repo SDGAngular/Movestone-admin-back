@@ -1,6 +1,6 @@
 const express = require('express');
 const { homeController, configController } = require('../controllers/homeController');
-const { productController, searchImageByColor, updateProductVisibility, createProduct, updateProduct, getAllProductsForAdminController, deleteProduct } = require('../controllers/productController');
+const { productController, searchImageByColor, updateProductVisibility, createProduct, updateProduct, getAllProductsForAdminController, deleteProduct, deleteImage, deleteColor } = require('../controllers/productController');
 const { setQuery, getQuery, getEmails, submitEmail } = require('../controllers/queryController');
 const { authController } = require('../controllers/authController');
 const { authMiddleware } = require('../middlewares/authMiddlesware');
@@ -37,6 +37,8 @@ homeRouter.post('/getQuery',authMiddleware,getQuery);
 homeRouter.get('/getEmailsForNewsletter',authMiddleware,getEmails);
 homeRouter.get('/getAllProductsForAdmin',getAllProductsForAdminController);
 homeRouter.post('/uploadFiles',upload.array('photos', 12),uploadFileController);
+homeRouter.post('/deleteImage',deleteImage)
+homeRouter.post('/deleteColor',deleteColor)
 homeRouter.post('/createProduct',createProduct)
 homeRouter.patch('/updateProduct', updateProduct)
 homeRouter.delete('/deleteProduct', deleteProduct)

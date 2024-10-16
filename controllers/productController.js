@@ -1,4 +1,4 @@
-const { productService, getImageByColorService, updateVisibility, createProductService, updateProductService, getAllProducts, deleteProductService } = require("../services/productService");
+const { productService, getImageByColorService, updateVisibility, createProductService, updateProductService, getAllProducts, deleteProductService, deleteImageService, deleteColorService } = require("../services/productService");
 const { getSuccessPayload, getErrorPayload } = require("../utilities/getSuccessAndErrorPayload");
 
 
@@ -129,6 +129,44 @@ const getAllProductsForAdminController = async (request, response, next) => {
   }
 };
 
+const deleteColor = async (request, response, next) => {
+  try {
+    
+
+  const colorDetails = request.body;
+  const success = await deleteColorService(colorDetails)
+
+
+    const successPayload = getSuccessPayload();
+    successPayload.responsePayload = success;
+    response.send(successPayload);
+  } catch (error) {
+    const errorPayload = getErrorPayload();
+    errorPayload.message = error.errorMessage;
+    errorPayload.extendedMessage = error.message;
+    response.send(errorPayload);
+  }
+};
+
+
+
+const deleteImage = async (request, response, next) => {
+  try {
+    
+
+    const imageDetails = request.body;
+    const deleteProduct = await deleteImageService(imageDetails);
+
+    const successPayload = getSuccessPayload();
+    successPayload.responsePayload = deleteProduct;
+    response.send(successPayload);
+  } catch (error) {
+    const errorPayload = getErrorPayload();
+    errorPayload.message = error.errorMessage;
+    errorPayload.extendedMessage = error.message;
+    response.send(errorPayload);
+  }
+};
 
 const updateProduct = async (request, response, next) => {
   try {
@@ -149,4 +187,4 @@ const updateProduct = async (request, response, next) => {
   }
 };
 
-module.exports = {productController,createProduct,searchImageByColor, updateProductVisibility, getAllProductsForAdminController,deleteProduct, updateProduct}
+module.exports = {productController,createProduct,searchImageByColor, deleteImage, deleteColor, updateProductVisibility, getAllProductsForAdminController,deleteProduct, updateProduct}

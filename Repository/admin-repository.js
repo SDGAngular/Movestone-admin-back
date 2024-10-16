@@ -1,7 +1,9 @@
 const Config = require("../database/models/config");
+const ProductsPictures = require("../database/models/productPics");
 const Products = require("../database/models/products");
 
 const { Op, Sequelize } = require("sequelize");
+const { deleteImageByUrl } = require("../external/cloudinary");
 
 const createProductRepo =  async (reqBody)=>{
 
@@ -25,7 +27,7 @@ const deleteProductRepo =  async ({productID,secretKey})=>{
 
        
         const findScretKey = await Config.findOne({where:{attribute1:secretKey},raw:true});
-      console.log(findScretKey)
+        console.log(findScretKey)
         if (findScretKey?.attribute1!==secretKey){
             throw ({errorMessage:"error caught in repo level", message:"secret key invalid"});
         }
@@ -55,9 +57,47 @@ const updatedProductRepo=  async (reqBody)=>{
 
     try{
         console.log(reqBody);
-        const product= await Products.update(reqBody,{where:{productID:reqBody.productID}});
+        const product= await Products.update(reqBody,{where:{productID:reqBody.productID}, returning: true});
         // await Products.save();
-        return product;
+        return product[1];
+    }
+    catch(error){
+        console.log("in repo",error.message)
+        throw ({errorMessage:"error caught in repo level", message:error.message});
+   }
+    
+
+}
+
+const deleteImageRepo  = async (imageUrl)=>{
+
+    try{
+       
+        const image= await ProductsPictures.destroy({where:{productImageURL:imageUrl}});
+        // await Products.save();
+        return image[1];
+    }
+    catch(error){
+        console.log("in repo",error.message)
+        throw ({errorMessage:"error caught in repo level", message:error.message});
+   }
+    
+
+}
+
+const deleteColorRepo  = async (productID,colorHexCode)=>{
+
+    try{
+
+        const findAllImages = await ProductsPictures.findAll({where:{productID,productColor:colorHexCode}});
+        findAllImages.forEach(async (eachImage)=>{
+
+            await deleteImageByUrl(eachImage.productImageURL);
+            await deleteImageRepo(eachImage.productImageURL)
+
+        })
+        // await Products.save();
+        return {message:{}};
     }
     catch(error){
         console.log("in repo",error.message)
@@ -68,4 +108,4 @@ const updatedProductRepo=  async (reqBody)=>{
 }
 
 
-module.exports={createProductRepo, deleteProductRepo, updatedProductRepo,getAllProducts}
+module.exports={createProductRepo, deleteColorRepo,deleteProductRepo, updatedProductRepo,getAllProducts,deleteImageRepo}

@@ -1,5 +1,6 @@
 const Config = require("../database/models/config");
-const { createProductRepo, updatedProductRepo, getAllProducts, deleteProductRepo } = require("../Repository/admin-repository");
+const { deleteImageByUrl } = require("../external/cloudinary");
+const { createProductRepo, updatedProductRepo, getAllProducts, deleteProductRepo, deleteImageRepo, deleteColorRepo } = require("../Repository/admin-repository");
 const { getProductDetails, getImagesByHextCodeAndProductCode, updateProductVisibilityInDb } = require("../Repository/homeRepository");
 
 const productService = async (request, response) => {
@@ -50,9 +51,43 @@ const updateProductService = async (requestBody) => {
   const responseBody = {};
   try {
 
-    const updatedProduct = updatedProductRepo(requestBody);
+    const updatedProduct = await updatedProductRepo(requestBody);
+    // const newUpdatedProd = await getProductDetails(requestBody.productID)
     
     return updatedProduct;
+
+
+  } catch (error) {
+    console.log('prod service',error.message)
+    throw ({ errorMessage: "error caught in service level", message: error.message });
+  }
+};
+
+const deleteColorService = async ({productID,colorHexCode}) => {
+  const responseBody = {};
+
+  try {
+
+    const updatedProduct = deleteColorRepo(productID,colorHexCode);
+    
+    return updatedProduct;
+
+
+  } catch (error) {
+    console.log('prod service',error.message)
+    throw ({ errorMessage: "error caught in service level", message: error.message });
+  }
+};
+
+const deleteImageService = async (requestBody) => {
+  const responseBody = {};
+  const imageUrl=requestBody.imageUrl;
+  try {
+
+    await deleteImageByUrl(imageUrl);
+    await deleteImageRepo(imageUrl);
+    
+    return {message:{imageUrl}};
 
 
   } catch (error) {
@@ -123,6 +158,8 @@ module.exports = {
   getImageByColorService,
   updateVisibility,
   getAllProducts,
+  deleteColorService,
+  deleteImageService,
   createProductService,
   deleteProductService,
   updateProductService,
