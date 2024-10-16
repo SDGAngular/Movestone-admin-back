@@ -45,7 +45,8 @@ const deleteProductRepo =  async ({productID,secretKey})=>{
 const getAllProducts = async ()=>{
 
     try{
-        return await Products.findAll();
+        return  await Products.findAll({attributes:['productID','productName','price','features','imageURL','colorOptions','visible','category'],
+        include:{model:ProductsPictures, as:'productPictureDetails', attributes:['productImageURL','id','productColor'], order:[['id','ASC']] }});
     }
     catch(error){
         console.log("in repo",error.message)
