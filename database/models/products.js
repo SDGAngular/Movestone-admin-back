@@ -187,7 +187,7 @@ const Products = db.define('Products', {
 console.log(Products === db.models.Products); // true
 
 // Define associations
-Products.hasMany(ProductsPictures, { foreignKey: 'productID', as: 'productPictureDetails' });
+Products.hasMany(ProductsPictures, { foreignKey: 'productID', as: 'productPictureDetails' , onDelete:'CASCADE'});
 ProductsPictures.belongsTo(Products, { foreignKey: 'productID', as: 'productInfo' });
 
 // Uncomment and use the following lines if you have the Query model and association

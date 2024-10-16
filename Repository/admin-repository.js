@@ -31,6 +31,14 @@ const deleteProductRepo =  async ({productID,secretKey})=>{
         if (findScretKey?.attribute1!==secretKey){
             throw ({errorMessage:"error caught in repo level", message:"secret key invalid"});
         }
+
+        const productPictures = await ProductsPictures.findAll({where:{productID}});
+        productPictures.forEach(async (eachImage)=>{
+
+            await deleteImageByUrl(eachImage.productImageURL);
+
+        })
+
         const product= await Products.destroy({where:{productID}});
         return product;
     }
