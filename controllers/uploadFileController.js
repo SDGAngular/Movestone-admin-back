@@ -16,6 +16,12 @@ const uploadFileController = async (req,resp,next)=>{
         req.files.forEach(async (eachFile)=>{
 
 
+           
+    
+        })
+
+        for(eachFile of req.files){
+
             try{
                 const upload = await uploadOnCloudinary(eachFile.path);
                 const prodPic= {productID:req.body.productID, productColor:req.body.productHexCode,productImageURL:upload.url}
@@ -23,6 +29,7 @@ const uploadFileController = async (req,resp,next)=>{
                 const createdProductPic =  await ProductsPictures.create(prodPic);
                 console.log("product PIC",createdProductPic)
                 arrayOfPics.push(createdProductPic);
+                console.log(arrayOfPics);
             }
 
             catch(err){
@@ -33,8 +40,9 @@ const uploadFileController = async (req,resp,next)=>{
                 resp.send(errorPayload)
    
             }
-    
-        })
+        }
+
+        console.log("hello")
 
         const successPayload = getSuccessPayload();
         successPayload.responsePayload = arrayOfPics;
