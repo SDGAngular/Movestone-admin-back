@@ -41,7 +41,7 @@ homeRouter.post('/deleteImage',deleteImage)
 homeRouter.post('/deleteColor',deleteColor)
 homeRouter.post('/createProduct',createProduct)
 homeRouter.patch('/updateProduct', updateProduct)
-homeRouter.delete('/deleteProduct', deleteProduct)
+homeRouter.post('/deleteProduct', deleteProduct)
 
 
 //Schedulers

@@ -34,6 +34,10 @@ INSERT INTO public."configProperties" ("pageName", "sectionName", attribute1, at
 INSERT INTO public."configProperties" ("pageName", "sectionName", attribute1, attribute2, attribute3, "createdAt", "updatedAt") VALUES('products-eRikshaw', 'banner', 'https://res.cloudinary.com/dyizlmke8/image/upload/v1719644024/Movestone/Home%20page/Slider_3_oydwm1.jpg', NULL, NULL, '2024-08-04 11:40:00.512', '2024-08-04 11:40:00.512');
 INSERT INTO public."configProperties" ("pageName", "sectionName", attribute1, attribute2, attribute3, "createdAt", "updatedAt") VALUES('products-eRikshaw', 'banner', 'https://res.cloudinary.com/dyizlmke8/image/upload/v1719644026/Movestone/Home%20page/Slider_4_nguptf.jpg', NULL, NULL, '2024-08-04 11:40:00.512', '2024-08-04 11:40:00.512');
 
+INSERT INTO public."configProperties"
+(id, "pageName", "sectionName", attribute1, attribute2, attribute3, "createdAt", "updatedAt")
+VALUES(16, 'deleteProduct', 'secret', 'secretKey', NULL, NULL, '2024-09-07 12:47:26.484', '2024-09-07 12:47:26.484');
+
 
 
 -- public."Users" definition
